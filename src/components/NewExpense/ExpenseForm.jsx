@@ -1,12 +1,12 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 
-import { useState } from "react";
 import "./ExpenseForm.css";
 
 export default function ExpenseForm(props) {
-  const [enteredTitle, setEnteredTitle] = useState('');
-  const [enteredAmount, setEnteredAmount] = useState('');
-  const [enteredDate, setEnteredDate] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
+
 
   const titleHandlerChange = (event) => {
     setEnteredTitle(event.target.value);
@@ -28,6 +28,7 @@ export default function ExpenseForm(props) {
 
     props.onSaveNewExpense(expense);
     resetExpenseForm();
+
   };
 
   const resetExpenseForm = () => {
@@ -36,12 +37,18 @@ export default function ExpenseForm(props) {
     setEnteredDate("");
   };
 
+
+
   return (
     <form onSubmit={submitExpenseForm}>
       <div className="new-expense-controls">
         <div className="new-expense-control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleHandlerChange} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleHandlerChange}
+          />
         </div>
         <div className="new-expense-control">
           <label>Amount</label>
@@ -65,6 +72,7 @@ export default function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense-actions">
+        <button onClick={props.onCancle}>Cancle</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
